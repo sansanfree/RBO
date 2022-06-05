@@ -3,14 +3,14 @@ Our code is based on [PySOT](https://github.com/STVIR/pysot) repository. You may
 
 ## 1. Environment setup
 This code has been tested on centos 7(Ubuntu is also OK), Python 3.6, Pytorch 1.1.0(Pytorch 1.2,1.3,1.4 and 1.5 are also OK, but for Pytorch 1.7.0 and above versions, the testing results will have slight difference), CUDA 10.0. Please install related libraries before running this code:
-```bash
+
 python setup.py build_ext --inplace
-```
-### Add SiamRPN++-RBO to your PYTHONPATH
-```bash
+
+### 2. Add SiamRPN++-RBO to your PYTHONPATH
+
 export PYTHONPATH=/path/to/SiamRPN++-RBO:$PYTHONPATH
 
-## 2. Test
+### 3. Test
 Download the pretrained model: [Google driver](https://drive.google.com/drive/folders/1BLZfzHEN4GG_29FpALKSlILXY7UyQ1Xa)  or [BaiduYun](https://pan.baidu.com/s/1a-UN4ZkjeLDGqIiF6TLZkg  code: 4oh4) and put them into `checkpoint` directory.
 
 Download testing datasets and put them into `testing_dataset` directory. Jsons of commonly used datasets can be downloaded from [BaiduYun](https://pan.baidu.com/s/1AWMBvdFs9qg58wEdoZ5pUA code: hkfp) or [Google driver](https://drive.google.com/drive/folders/1BP7NDhMUQvrgdJSQ8MieVzLRG-mbYkTU). If you want to test the tracker on a new dataset, please refer to [pysot-toolkit](https://github.com/StrangerZhang/pysot-toolkit) to set test_dataset.
@@ -71,10 +71,10 @@ We use four RTX 1080TI for training.
 We provide the raw tracking results of OTB100, VOT2016, UAV123, NFS30, GOT-10K,TC128 and LaSOT at . If you want to evaluate the tracker, please put those results into  `results` directory.
 
 #for example, evaluation on th OTB100 dataset
-```
+
 python tools/eval.py --dataset OTB100           
 
-```
+
 
 ## 5. Acknowledgement
 The code is implemented based on [pysot](https://github.com/STVIR/pysot). We would like to express our sincere thanks to the contributors.
