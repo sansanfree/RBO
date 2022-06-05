@@ -1,4 +1,4 @@
-# CSWinTT
+# RBO
 
 The official implementation of the CVPR 2022 paper [**Ranking-Based Siamese Visual Tracking**](https://arxiv.org/abs/2205.11761)
 
@@ -46,10 +46,8 @@ If you find this work useful for your research, please consider citing our work:
 }
 ```
 
-
 ## Contact
 If you have any questions, please feel free to contact tang0420@mail.ustc.edu.cn
 
 ## Acknowledgments
-* Thanks for the SiamRPN++(https://github.com/STVIR/pysot) and SiamBAN(https://github.com/hqucv/siamban) Libraries, which helps us to quickly implement our ideas.
 * Thanks for the SiamRPN++(https://github.com/STVIR/pysot) and SiamBAN(https://github.com/hqucv/siamban) Libraries, which helps us to quickly implement our ideas.
