@@ -9,7 +9,7 @@ python setup.py build_ext --inplace
 ### Add SiamRPN++-RBO to your PYTHONPATH
 ```bash
 export PYTHONPATH=/path/to/SiamRPN++-RBO:$PYTHONPATH
-#export PYTHONPATH=/media/ssd1/TF/SiamRPN++-RBO:$PYTHONPATH
+
 ## 2. Test
 Download the pretrained model: [Google driver](https://drive.google.com/drive/folders/1BLZfzHEN4GG_29FpALKSlILXY7UyQ1Xa)  or [BaiduYun](https://pan.baidu.com/s/1a-UN4ZkjeLDGqIiF6TLZkg  code: 4oh4) and put them into `checkpoint` directory.
 
