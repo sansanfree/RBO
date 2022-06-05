@@ -1,6 +1,5 @@
-# Testing dataset directory
-# Testing dataset directory
-# putting your testing dataset here
+
+# Putting your testing dataset here
  [VOT2016](http://www.votchallenge.net/vot2016/dataset.html)
 [OTB100](http://cvlab.hanyang.ac.kr/tracker_benchmark/datasets.html)
 [UAV123](https://ivul.kaust.edu.sa/Pages/Dataset-UAV123.aspx)
