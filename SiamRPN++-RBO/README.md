@@ -19,10 +19,6 @@ Download testing datasets and put them into `testing_dataset` directory. Jsons o
 ####### GOT-10K dataset #########3##
 python tools/test.py  --dataset GOT-10k  --snapshot checkpoints/SiamRPN++-RBO-got10k.pth --config experiments/test/GOT-10k/config.yaml
 
-####### GOT-10K dataset #########3##
-python tools/test.py                                \
-	--dataset got10k                      \ # dataset_name
-	--snapshot checkpoint/SiamRPN++-RBO-SiamRPN++-RBO.pth  \ # tracker_name
 
 ####### GOT-10K dataset #########3##
 python tools/test.py                                \
