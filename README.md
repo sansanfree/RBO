@@ -26,7 +26,7 @@ git clone https://github.com/sansanfree/RBO.git
 
 ## Evalution on the SiamRPN++-RBO
 
-Please refer to the [README]([https://github.com/sansanfree/RBO/SiamRPN++-RBO/README.md](https://github.com/sansanfree/RBO/blob/main/SiamRPN%2B%2B-RBO/README.md)) 
+Please refer to the [README](https://github.com/sansanfree/RBO/blob/main/SiamRPN%2B%2B-RBO/README.md) 
 
 ## Evalution on the SiamPW-RBO
 
