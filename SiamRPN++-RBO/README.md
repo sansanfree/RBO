@@ -11,7 +11,7 @@ python setup.py build_ext --inplace
 export PYTHONPATH=/path/to/SiamRPN++-RBO:$PYTHONPATH
 
 ## 2. Test
-Download the pretrained model: [Google driver](https://drive.google.com/drive/folders/1BLZfzHEN4GG_29FpALKSlILXY7UyQ1Xa)  or [BaiduYun](https://pan.baidu.com/s/1a-UN4ZkjeLDGqIiF6TLZkg  code: 4oh4) and put them into `checkpoint` directory.
+Download the pretrained model: [Google driver](https://drive.google.com/drive/folders/1BLZfzHEN4GG_29FpALKSlILXY7UyQ1Xa)  or [BaiduYun](https://pan.baidu.com/s/1a-UN4ZkjeLDGqIiF6TLZkg  code: 4oh4) and put them into `checkpoints` directory.
 
 Download testing datasets and put them into `testing_dataset` directory. Jsons of commonly used datasets can be downloaded from [BaiduYun](https://pan.baidu.com/s/1AWMBvdFs9qg58wEdoZ5pUA code: hkfp) or [Google driver](https://drive.google.com/drive/folders/1BP7NDhMUQvrgdJSQ8MieVzLRG-mbYkTU). If you want to test the tracker on a new dataset, please refer to [pysot-toolkit](https://github.com/StrangerZhang/pysot-toolkit) to set test_dataset.
 
