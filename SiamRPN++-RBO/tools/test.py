@@ -46,6 +46,7 @@ def main():
     cur_dir = os.path.dirname(os.path.realpath(__file__))
     dataset_root = os.path.join(cur_dir, '../testing_dataset', args.dataset)
     
+   # dataset_root = os.path.join('/media/disk1/TF/test_dataset', args.dataset)
     # create model
     model = ModelBuilder()
   
@@ -121,9 +122,8 @@ def main():
                     cv2.waitKey(1)
             toc /= cv2.getTickFrequency()
             # save results
-           # video_path = os.path.join('results', args.dataset, model_name, 'baseline', video.name)
-            video_path = os.path.join('results', args.dataset,(model_name + '_pk-{:.3f}'.format(cfg.TRACK.PENALTY_K) +'_wi-{:.3f}'.format(cfg.TRACK.WINDOW_INFLUENCE) + '_lr-{:.3f}'.format(cfg.TRACK.LR)),
-                    'baseline', video.name)
+            video_path = os.path.join('results', args.dataset, model_name, 'baseline', video.name)
+          
              
             if not os.path.isdir(video_path):
                 os.makedirs(video_path)
