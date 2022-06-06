@@ -52,7 +52,7 @@ Download the datasets：
 
 Scripts to prepare training dataset are listed in `training_dataset` directory.
 
- If u are confused with Prepare training datasets, please refers to SiamBAN[https://github.com/hqucv/siamban] for more details about setting training dataset.
+ If you are confused with preparing training datasets, please refers to SiamBAN[https://github.com/hqucv/siamban] for more details about setting training dataset.
 
 
 ### Download pretrained backbones
