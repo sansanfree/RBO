@@ -1,16 +1,16 @@
 # SiamRPN++-RBO
 Our code is based on [PySOT](https://github.com/STVIR/pysot) repository. You may check the original [README.md](https://github.com/STVIR/pysot/blob/master/README.md) of PySOT. 
 
-### 1. Environment setup
+## 1. Environment setup
 This code has been tested on centos 7(Ubuntu is also OK), Python 3.6, Pytorch 1.1.0(Pytorch 1.2,1.3,1.4 and 1.5 are also OK, but for Pytorch 1.7.0 and above versions, the testing results will have slight difference), CUDA 10.0. Please install related libraries before running this code:
 
 python setup.py build_ext --inplace
 
-## Add SiamRPN++-RBO to your PYTHONPATH
+### Add SiamRPN++-RBO to your PYTHONPATH
 
 export PYTHONPATH=/path/to/SiamRPN++-RBO:$PYTHONPATH
 
-### 2. Test
+## 2. Test
 Download the pretrained model: [Google driver](https://drive.google.com/drive/folders/1BLZfzHEN4GG_29FpALKSlILXY7UyQ1Xa)  or [BaiduYun](https://pan.baidu.com/s/1a-UN4ZkjeLDGqIiF6TLZkg  code: 4oh4) and put them into `checkpoint` directory.
 
 Download testing datasets and put them into `testing_dataset` directory. Jsons of commonly used datasets can be downloaded from [BaiduYun](https://pan.baidu.com/s/1AWMBvdFs9qg58wEdoZ5pUA code: hkfp) or [Google driver](https://drive.google.com/drive/folders/1BP7NDhMUQvrgdJSQ8MieVzLRG-mbYkTU). If you want to test the tracker on a new dataset, please refer to [pysot-toolkit](https://github.com/StrangerZhang/pysot-toolkit) to set test_dataset.
@@ -40,7 +40,7 @@ python tools/test.py   --dataset LaSOT --snapshot checkpoints/SiamRPN++-RBO-gene
 
 The testing result will be saved in the `results/dataset_name/tracker_name` directory.
 
-### 3. Train
+## 3. Train
 ### Prepare training datasets
 
 Download the datasets：
@@ -52,18 +52,18 @@ Download the datasets：
 
 Scripts to prepare training dataset are listed in `training_dataset` directory.
 
-## If u are confused with Prepare training datasets, please refers to SiamBAN[https://github.com/hqucv/siamban] for more details about setting training dataset.
+ If u are confused with Prepare training datasets, please refers to SiamBAN[https://github.com/hqucv/siamban] for more details about setting training dataset.
 
 
-## Download pretrained backbones
+### Download pretrained backbones
 Download pretrained backbones from [google driver](https://drive.google.com/drive/folders/1DuXVWVYIeynAcvt9uxtkuleV6bs6e3T9) or [BaiduYun](https://pan.baidu.com/s/1pYe73PjkQx4Ph9cd3ePfCQ) (code: 5o1d) and put them into `pretrained_models` directory.
 
-## Train a model
+### Train a model
 To train the SiamRPN++-RBO model, run `train.py` with the desired configs:
 
-## training got10k model
+### training got10k model
 cd experiments/train/got10k 
-## training general model
+### training general model
 cd experiments/train/fulldata  
 
 CUDA_VISIBLE_DEVICES=0,1,2,3
@@ -76,7 +76,7 @@ python -m torch.distributed.launch \
 
 We use four RTX 1080ti for training.
 
-### 4. Evaluation
+## 4. Evaluation
 We provide the raw tracking results of OTB100, VOT2016, UAV123, NFS30, GOT-10K,TC128 and LaSOT at . If you want to evaluate the tracker, please put those results into  `results` directory.
 
 ##for example, evalution on the OTB100 dataset
@@ -84,11 +84,11 @@ We provide the raw tracking results of OTB100, VOT2016, UAV123, NFS30, GOT-10K,T
 python tools/eval.py --dataset OTB100            
 
 
-### 5. Acknowledgement
+## 5. Acknowledgement
 The code is implemented based on [pysot](https://github.com/STVIR/pysot). We would like to express our sincere thanks to the contributors.
 
 
-### 6. Cite
+## 6. Cite
 If you use RBO in your work please cite our paper:
 > @InProceedings{tang_2022_CVPR,  
    author = {Feng Tang, Qiang Ling},  
