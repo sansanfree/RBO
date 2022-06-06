@@ -10,9 +10,9 @@ this paper proposes a ranking-based optimization algorithm to explore the relati
 
 ## Environment 
 
-### Tracking Results and Pretrained Model
+### Tracking Results 
 
-**Tracking results:** the raw results of SiamRPN++-RBO can be found [here](https://drive.google.com/drive/folders/163hvsA3_fuV715_wMPMW56kH_zaL0Gfl).
+The raw results of SiamRPN++-RBO can be found [here](https://drive.google.com/drive/folders/163hvsA3_fuV715_wMPMW56kH_zaL0Gfl).
 
 
 
