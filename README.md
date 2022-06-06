@@ -4,12 +4,11 @@ The official implementation of the CVPR 2022 paper [**Ranking-Based Siamese Visu
 
 ![RBO_Framework](RBO_framework.png)
 
-## Highlights
-### Introduction
+## Introduction
 this paper proposes a ranking-based optimization algorithm to explore the relationship among different proposals for Siamese trackers.
 
 
- ## Environment 
+## Environment 
 
 ### Tracking Results and Pretrained Model
 
