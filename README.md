@@ -8,31 +8,31 @@ The official implementation of the CVPR 2022 paper [**Ranking-Based Siamese Visu
 ### Introduction
 this paper proposes a ranking-based optimization algorithm to explore the relationship among different proposals for Siamese trackers.
 
-## Abstract
- 
 
-## Tracking Results and Pretrained Model
+ ## Environment 
+
+### Tracking Results and Pretrained Model
 
 **Tracking results:** the raw results of SiamRPN++-RBO can be found [here](https://drive.google.com/drive/folders/163hvsA3_fuV715_wMPMW56kH_zaL0Gfl).
 
 
 
-## Environment 
 
-#### Clone the GIT repository.  
+
+### Clone the GIT repository.  
 ```bash
 git clone https://github.com/sansanfree/RBO.git
 ```
 
-## Evalution on the SiamRPN++-RBO
+### Evalution on the SiamRPN++-RBO
 
 Please refer to the [README](https://github.com/sansanfree/RBO/blob/main/SiamRPN%2B%2B-RBO/README.md) 
 
-## Evalution on the SiamPW-RBO
+### Evalution on the SiamPW-RBO
 
 coming soon
 
-## Evalution on the SiamBAN-RBO
+### Evalution on the SiamBAN-RBO
 coming soon
 
 ## Citation
