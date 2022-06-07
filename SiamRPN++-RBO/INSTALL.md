@@ -8,7 +8,7 @@
 * matplotlib
 * tqdm
 * OpenCV
-
+* tensorboardX
 
 #### Build extensions
 ```
