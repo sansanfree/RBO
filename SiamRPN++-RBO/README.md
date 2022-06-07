@@ -76,7 +76,7 @@ python -m torch.distributed.launch \
 We use four RTX 1080ti for training.
 
 ## 4. Evaluation
-We provide the raw tracking results of OTB100, VOT2016, UAV123, NFS30, GOT-10K,TC128 and LaSOT at . If you want to evaluate the tracker, please put those results into  `results` directory.
+We provide the raw tracking results of OTB100, VOT2016, UAV123, NFS30, GOT-10K, TC128 and LaSOT. If you want to evaluate the tracker, please put those results into  `results` directory.
 
 ##for example, evalution on the OTB100 dataset
 
