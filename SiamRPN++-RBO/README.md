@@ -2,9 +2,9 @@
 Our code is based on [PySOT](https://github.com/STVIR/pysot) repository. You may check the original [README.md](https://github.com/STVIR/pysot/blob/master/README.md) of PySOT. 
 
 ## 1. Environment setup
-This code has been tested on centos 7(Ubuntu is also OK), Python 3.6, Pytorch 1.1.0(Pytorch 1.2,1.3,1.4 and 1.5 are also OK, but for Pytorch 1.7.0 and above versions, the testing results will have slight difference), CUDA 10.0. Please install related libraries in [INSTALL.MD]:
-and run this code:
-python setup.py build_ext --inplace
+This code has been tested on centos 7(Ubuntu is also OK), Python 3.6, Pytorch 1.1.0(Pytorch 1.2,1.3,1.4 and 1.5 are also OK, but for Pytorch 1.7.0 and above versions, the testing results will have slight difference), CUDA 10.0. 
+Please install related libraries in [INSTALL.MD](https://github.com/sansanfree/RBO/blob/main/SiamRPN%2B%2B-RBO/INSTALL.md):
+
 
 #### Add SiamRPN++-RBO to your PYTHONPATH
 export PYTHONPATH=/path/to/SiamRPN++-RBO:$PYTHONPATH
