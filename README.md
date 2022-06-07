@@ -23,15 +23,15 @@ The raw results of SiamRPN++-RBO can be found [here](https://drive.google.com/dr
 git clone https://github.com/sansanfree/RBO.git
 ```
 
-### Evalution on the SiamRPN++-RBO
+### Evaluation on the SiamRPN++-RBO
 
 Please refer to the [README](https://github.com/sansanfree/RBO/blob/main/SiamRPN%2B%2B-RBO/README.md) 
 
-### Evalution on the SiamPW-RBO
+### Evaluation on the SiamPW-RBO
 
 coming soon
 
-### Evalution on the SiamBAN-RBO
+### Evaluation on the SiamBAN-RBO
 coming soon
 
 ## Citation
