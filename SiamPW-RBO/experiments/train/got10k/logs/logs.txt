@@ -1,0 +1,796 @@
+[2022-06-06 21:09:04,376-rk0-train.py#265] Version Information: 
+commit : 
+  log  : 
+
+[2022-06-06 21:09:04,378-rk0-train.py#266] config 
+{
+    "META_ARC": "siamrpn_r50_l234_dwxcorr",
+    "CUDA": true,
+    "TRAIN": {
+        "THR_HIGH": 0.6,
+        "THR_LOW": 0.3,
+        "NEG_NUM": 16,
+        "POS_NUM": 16,
+        "TOTAL_NUM": 64,
+        "EXEMPLAR_SIZE": 127,
+        "SEARCH_SIZE": 255,
+        "BASE_SIZE": 8,
+        "OUTPUT_SIZE": 25,
+        "RESUME": "",
+        "PRETRAINED": "",
+        "LOG_DIR": "./logs",
+        "SNAPSHOT_DIR": "./snapshot",
+        "EPOCH": 20,
+        "START_EPOCH": 0,
+        "BATCH_SIZE": 32,
+        "NUM_WORKERS": 1,
+        "MOMENTUM": 0.9,
+        "WEIGHT_DECAY": 0.0001,
+        "CLS_WEIGHT": 1.0,
+        "LOC_WEIGHT": 1.2,
+        "RANK_CLS_WEIGHT": 0.5,
+        "RANK_IGR_WEIGHT": 0.25,
+        "HARD_NEGATIVE_THS": 0.5,
+        "RANK_NUM_HARD_NEGATIVE_SAMPLES": 8,
+        "IoU_Gamma": 5,
+        "MASK_WEIGHT": 1,
+        "PRINT_FREQ": 20,
+        "LOG_GRADS": false,
+        "GRAD_CLIP": 10.0,
+        "BASE_LR": 0.005,
+        "LR": {
+            "TYPE": "log",
+            "KWARGS": {
+                "start_lr": 0.005,
+                "end_lr": 5e-05
+            }
+        },
+        "LR_WARMUP": {
+            "WARMUP": true,
+            "TYPE": "step",
+            "EPOCH": 5,
+            "KWARGS": {
+                "start_lr": 0.001,
+                "end_lr": 0.005,
+                "step": 1
+            }
+        }
+    },
+    "DATASET": {
+        "TEMPLATE": {
+            "SHIFT": 4,
+            "SCALE": 0.05,
+            "BLUR": 0.0,
+            "FLIP": 0.0,
+            "COLOR": 1.0
+        },
+        "SEARCH": {
+            "SHIFT": 64,
+            "SCALE": 0.18,
+            "BLUR": 0.2,
+            "FLIP": 0.0,
+            "COLOR": 1.0
+        },
+        "NEG": 0.2,
+        "GRAY": 0.0,
+        "NAMES": [
+            "GOT"
+        ],
+        "VID": {
+            "ROOT": "train_dataset/vid/crop511",
+            "ANNO": "train_dataset/vid/train.json",
+            "FRAME_RANGE": 100,
+            "NUM_USE": 100000
+        },
+        "YOUTUBEBB": {
+            "ROOT": "/media/disk1/TF/train_dataset/yt_dataset",
+            "ANNO": "/media/disk1/TF/train_dataset/yt_dataset/train.json",
+            "FRAME_RANGE": 3,
+            "NUM_USE": 200000
+        },
+        "COCO": {
+            "ROOT": "/media/disk1/TF/train_dataset/coco/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/coco/train2017.json",
+            "FRAME_RANGE": 1,
+            "NUM_USE": 100000
+        },
+        "DET": {
+            "ROOT": "/media/disk1/TF/train_dataset/det/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/det/train.json",
+            "FRAME_RANGE": 1,
+            "NUM_USE": 200000
+        },
+        "GOT": {
+            "ROOT": "/media/disk1/TF/train_dataset/GOT10k511/got10k/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/GOT10k511/got10k/all.json",
+            "FRAME_RANGE": 100,
+            "NUM_USE": 200000
+        },
+        "VIDEOS_PER_EPOCH": 600000
+    },
+    "BACKBONE": {
+        "TYPE": "resnet50",
+        "KWARGS": {
+            "used_layers": [
+                2,
+                3,
+                4
+            ]
+        },
+        "PRETRAINED": "pretrained_models/resnet50.model",
+        "TRAIN_LAYERS": [
+            "layer2",
+            "layer3",
+            "layer4"
+        ],
+        "LAYERS_LR": 0.1,
+        "TRAIN_EPOCH": 10
+    },
+    "ADJUST": {
+        "ADJUST": true,
+        "KWARGS": {
+            "in_channels": [
+                512,
+                1024,
+                2048
+            ],
+            "out_channels": [
+                256,
+                256,
+                256
+            ]
+        },
+        "TYPE": "AdjustAllLayer"
+    },
+    "RPN": {
+        "TYPE": "MultiRPN",
+        "KWARGS": {
+            "anchor_num": 5,
+            "in_channels": [
+                256,
+                256,
+                256
+            ],
+            "weighted": true
+        }
+    },
+    "MASK": {
+        "MASK": false,
+        "TYPE": "MaskCorr",
+        "KWARGS": {}
+    },
+    "REFINE": {
+        "REFINE": false,
+        "TYPE": "Refine"
+    },
+    "ANCHOR": {
+        "STRIDE": 8,
+        "RATIOS": [
+            0.33,
+            0.5,
+            1,
+            2,
+            3
+        ],
+        "SCALES": [
+            8
+        ],
+        "ANCHOR_NUM": 5
+    },
+    "TRACK": {
+        "TYPE": "SiamRPNTracker",
+        "PENALTY_K": 0.04,
+        "WINDOW_INFLUENCE": 0.44,
+        "LR": 0.4,
+        "EXEMPLAR_SIZE": 127,
+        "INSTANCE_SIZE": 255,
+        "BASE_SIZE": 8,
+        "CONTEXT_AMOUNT": 0.5,
+        "LOST_INSTANCE_SIZE": 831,
+        "CONFIDENCE_LOW": 0.85,
+        "CONFIDENCE_HIGH": 0.998,
+        "MASK_THERSHOLD": 0.3,
+        "MASK_OUTPUT_SIZE": 127
+    }
+}
+[2022-06-06 21:09:12,149-rk0-model_load.py# 51] load pretrained model from /media/ssd1/TF/SiamRPN++-RBO/tools/../pretrained_models/resnet50.model
+[2022-06-06 21:09:12,421-rk0-model_load.py# 45] remove prefix 'module.'
+[2022-06-06 21:09:12,424-rk0-model_load.py# 36] used keys:265
+[2022-06-06 21:09:12,457-rk0-train.py# 58] build train dataset
+[2022-06-06 21:09:12,458-rk0-dataset.py# 42] loading GOT
+[2022-07-17 20:30:23,415-rk0-train.py#265] Version Information: 
+commit : 
+  log  : 
+
+[2022-07-17 20:30:23,417-rk0-train.py#266] config 
+{
+    "META_ARC": "siamban_r50_l234",
+    "CUDA": true,
+    "TRAIN": {
+        "NEG_NUM": 16,
+        "POS_NUM": 16,
+        "TOTAL_NUM": 64,
+        "EXEMPLAR_SIZE": 127,
+        "SEARCH_SIZE": 255,
+        "BASE_SIZE": 8,
+        "OUTPUT_SIZE": 25,
+        "RESUME": "",
+        "PRETRAINED": "",
+        "LOG_DIR": "./logs",
+        "SNAPSHOT_DIR": "./snapshot",
+        "EPOCH": 20,
+        "START_EPOCH": 0,
+        "BATCH_SIZE": 28,
+        "NUM_WORKERS": 1,
+        "MOMENTUM": 0.9,
+        "WEIGHT_DECAY": 0.0001,
+        "CLS_WEIGHT": 1.0,
+        "LOC_WEIGHT": 1.0,
+        "RANK_CLS_WEIGHT": 0.5,
+        "RANK_IGR_WEIGHT": 0.25,
+        "HARD_NEGATIVE_THS": 0.5,
+        "RANK_NUM_HARD_NEGATIVE_SAMPLES": 8,
+        "IoU_Gamma": 5,
+        "PRINT_FREQ": 20,
+        "LOG_GRADS": false,
+        "GRAD_CLIP": 10.0,
+        "BASE_LR": 0.005,
+        "LR": {
+            "TYPE": "log",
+            "KWARGS": {
+                "start_lr": 0.005,
+                "end_lr": 5e-05
+            }
+        },
+        "LR_WARMUP": {
+            "WARMUP": true,
+            "TYPE": "step",
+            "EPOCH": 5,
+            "KWARGS": {
+                "start_lr": 0.001,
+                "end_lr": 0.005,
+                "step": 1
+            }
+        }
+    },
+    "DATASET": {
+        "TEMPLATE": {
+            "SHIFT": 4,
+            "SCALE": 0.05,
+            "BLUR": 0.0,
+            "FLIP": 0.0,
+            "COLOR": 1.0
+        },
+        "SEARCH": {
+            "SHIFT": 64,
+            "SCALE": 0.18,
+            "BLUR": 0.2,
+            "FLIP": 0.0,
+            "COLOR": 1.0
+        },
+        "NEG": 0.2,
+        "GRAY": 0.0,
+        "NAMES": [
+            "GOT10K"
+        ],
+        "VID": {
+            "ROOT": "/media/disk1/TF/train_dataset/vid/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/vid/train.json",
+            "FRAME_RANGE": 100,
+            "NUM_USE": 100000
+        },
+        "YOUTUBEBB": {
+            "ROOT": "/media/disk1/TF/train_dataset/yt_dataset",
+            "ANNO": "/media/disk1/TF/train_dataset/yt_dataset/train.json",
+            "FRAME_RANGE": 3,
+            "NUM_USE": 200000
+        },
+        "COCO": {
+            "ROOT": "/media/disk1/TF/train_dataset/coco/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/coco/train2017.json",
+            "FRAME_RANGE": 1,
+            "NUM_USE": 100000
+        },
+        "DET": {
+            "ROOT": "/media/disk1/TF/train_dataset/det/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/det/train.json",
+            "FRAME_RANGE": 1,
+            "NUM_USE": 200000
+        },
+        "GOT10K": {
+            "ROOT": "/media/disk1/TF/train_dataset/GOT10k511/got10k/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/GOT10k511/got10k/all.json",
+            "FRAME_RANGE": 100,
+            "NUM_USE": 200000
+        },
+        "LaSOT": {
+            "ROOT": "/media/disk1/TF/train_dataset/LaSOTcrop511/crop511",
+            "ANNO": "/media/disk1/TF/train_dataset/LaSOTcrop511/train.json",
+            "FRAME_RANGE": 100,
+            "NUM_USE": 200000
+        },
+        "VIDEOS_PER_EPOCH": 600000
+    },
+    "BACKBONE": {
+        "TYPE": "resnet50",
+        "KWARGS": {
+            "used_layers": [
+                2,
+                3
+            ]
+        },
+        "PRETRAINED": "pretrained_models/resnet50.model",
+        "TRAIN_LAYERS": [
+            "layer2",
+            "layer3"
+        ],
+        "LAYERS_LR": 0.1,
+        "TRAIN_EPOCH": 10
+    },
+    "ADJUST": {
+        "ADJUST": true,
+        "KWARGS": {
+            "in_channels": [
+                512,
+                1024
+            ],
+            "out_channels": [
+                256,
+                256
+            ]
+        },
+        "TYPE": "AdjustAllLayer"
+    },
+    "BAN": {
+        "BAN": true,
+        "TYPE": "MultiBAN",
+        "KWARGS": {
+            "in_channels": [
+                256,
+                256
+            ],
+            "cls_out_channels": 2,
+            "weighted": true
+        }
+    },
+    "POINT": {
+        "STRIDE": 8
+    },
+    "TRACK": {
+        "TYPE": "SiamBANTracker",
+        "PENALTY_K": 0.14,
+        "WINDOW_INFLUENCE": 0.45,
+        "LR": 0.3,
+        "EXEMPLAR_SIZE": 127,
+        "INSTANCE_SIZE": 255,
+        "BASE_SIZE": 8,
+        "CONTEXT_AMOUNT": 0.5
+    }
+}
+[2022-07-17 20:30:29,658-rk0-model_load.py# 48] load pretrained model from /media/ssd1/TF/SiamPW-RBO/tools/../pretrained_models/resnet50.model
+[2022-07-17 20:30:30,373-rk0-model_load.py# 42] remove prefix 'module.'
+[2022-07-17 20:30:30,374-rk0-model_load.py# 30] [Warning] unused_pretrained_keys: {'layer4.0.conv2.weight', 'layer4.1.bn3.running_mean', 'layer4.1.conv3.weight', 'layer4.0.conv3.weight', 'layer4.1.bn1.running_var', 'layer4.0.bn1.running_var', 'layer4.1.bn2.bias', 'layer4.0.downsample.1.bias', 'layer4.1.bn3.weight', 'layer4.0.bn1.bias', 'layer4.0.bn3.running_mean', 'layer4.0.downsample.1.weight', 'layer4.0.bn3.running_var', 'layer4.1.conv2.weight', 'layer4.2.bn2.running_var', 'layer4.1.bn1.running_mean', 'layer4.0.bn3.bias', 'layer4.2.bn3.running_mean', 'layer4.1.bn2.running_var', 'layer4.0.bn2.weight', 'layer4.1.bn2.running_mean', 'layer4.1.conv1.weight', 'layer4.2.conv1.weight', 'layer4.0.conv1.weight', 'layer4.0.bn1.running_mean', 'layer4.2.bn2.bias', 'layer4.2.bn1.running_var', 'layer4.2.bn3.bias', 'layer4.1.bn3.bias', 'layer4.0.downsample.0.weight', 'layer4.2.conv2.weight', 'layer4.2.bn1.bias', 'layer4.2.bn2.running_mean', 'layer4.0.bn2.running_mean', 'layer4.2.bn1.running_mean', 'layer4.2.bn1.weight', 'layer4.2.conv3.weight', 'layer4.0.bn3.weight', 'layer4.0.downsample.1.running_mean', 'layer4.2.bn2.weight', 'layer4.0.bn2.running_var', 'layer4.1.bn3.running_var', 'layer4.2.bn3.weight', 'layer4.1.bn1.weight', 'layer4.0.bn2.bias', 'layer4.0.downsample.1.running_var', 'layer4.1.bn1.bias', 'layer4.0.bn1.weight', 'layer4.1.bn2.weight', 'layer4.2.bn3.running_var'}
+[2022-07-17 20:30:30,374-rk0-model_load.py# 32] unused checkpoint keys:50
+[2022-07-17 20:30:30,375-rk0-model_load.py# 33] used keys:215
+[2022-07-17 20:30:30,392-rk0-train.py# 58] build train dataset
+[2022-07-17 20:30:30,393-rk0-dataset.py# 41] loading GOT10K
+[2022-07-17 20:31:33,904-rk0-dataset.py# 66] GOT10K loaded
+[2022-07-17 20:31:33,915-rk0-dataset.py# 95] GOT10K start-index 0 select [200000/9515] path_format {}.{}.{}.jpg
+[2022-07-17 20:31:34,606-rk0-dataset.py#209] shuffle done!
+[2022-07-17 20:31:34,607-rk0-dataset.py#210] dataset length 12000000
+[2022-07-17 20:31:34,808-rk0-train.py# 62] build dataset done
+[2022-07-17 20:31:35,144-rk0-train.py#303] (WarmUPScheduler) lr spaces: 
+[1.00000000e-03 1.37972966e-03 1.90365394e-03 2.62652780e-03
+ 3.62389832e-03 5.00000000e-03 3.59842837e-03 2.58973734e-03
+ 1.86379686e-03 1.34134790e-03 9.65348864e-04 6.94747747e-04
+ 5.00000000e-04 3.59842837e-04 2.58973734e-04 1.86379686e-04
+ 1.34134790e-04 9.65348864e-05 6.94747747e-05 5.00000000e-05]
+[2022-07-17 20:31:35,146-rk0-train.py#304] model prepare done
+[2022-07-17 20:31:35,153-rk0-train.py#166] model
+.[31mbackbone[0m (ResNet)
+         .[31mconv1[0m (Conv2d)
+               - weight
+         .bn1 (BatchNorm2d)
+             - weight
+             - bias
+         .[31mrelu[0m (ReLU)
+         .[31mmaxpool[0m (MaxPool2d)
+         .[31mlayer1[0m (Sequential)
+                .[31m0[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                  .[31mdownsample[0m (Sequential)
+                             .[31m0[0m (Conv2d)
+                               - weight
+                             .1 (BatchNorm2d)
+                               - weight
+                               - bias
+                .[31m1[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m2[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+         .[31mlayer2[0m (Sequential)
+                .[31m0[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                  .[31mdownsample[0m (Sequential)
+                             .[31m0[0m (Conv2d)
+                               - weight
+                             .1 (BatchNorm2d)
+                               - weight
+                               - bias
+                .[31m1[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m2[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m3[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+         .[31mlayer3[0m (Sequential)
+                .[31m0[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                  .[31mdownsample[0m (Sequential)
+                             .[31m0[0m (Conv2d)
+                               - weight
+                             .1 (BatchNorm2d)
+                               - weight
+                               - bias
+                .[31m1[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m2[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m3[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m4[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+                .[31m5[0m (Bottleneck)
+                  .[31mconv1[0m (Conv2d)
+                        - weight
+                  .bn1 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv2[0m (Conv2d)
+                        - weight
+                  .bn2 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mconv3[0m (Conv2d)
+                        - weight
+                  .bn3 (BatchNorm2d)
+                      - weight
+                      - bias
+                  .[31mrelu[0m (ReLU)
+.[31mneck[0m (AdjustAllLayer)
+     .[31mdownsample2[0m (AdjustLayer)
+                 .[31mdownsample[0m (Sequential)
+                            .[31m0[0m (Conv2d)
+                              - [31mweight[0m
+                            .[31m1[0m (BatchNorm2d)
+                              - [31mweight[0m
+                              - [31mbias[0m
+     .[31mdownsample3[0m (AdjustLayer)
+                 .[31mdownsample[0m (Sequential)
+                            .[31m0[0m (Conv2d)
+                              - [31mweight[0m
+                            .[31m1[0m (BatchNorm2d)
+                              - [31mweight[0m
+                              - [31mbias[0m
+.[31mhead[0m (MultiBAN)
+     - [31mcls_weight[0m
+     - [31mloc_weight[0m
+     - [31mloc_scale[0m
+     .[31mbox2[0m (NONLOCALBAN)
+          .[31mhead[0m (CARHead)
+               .[31mfi[0m (Sequential)
+                  .[31m0[0m (Conv2d)
+                    - [31mweight[0m
+                    - [31mbias[0m
+                  .[31m1[0m (BatchNorm2d)
+                    - [31mweight[0m
+                    - [31mbias[0m
+                  .[31m2[0m (ReLU)
+               .[31mcls_tower[0m (Sequential)
+                         .[31m0[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m1[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m2[0m (ReLU)
+                         .[31m3[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m4[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m5[0m (ReLU)
+                         .[31m6[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m7[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m8[0m (ReLU)
+               .[31mreg_tower[0m (Sequential)
+                         .[31m0[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m1[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m2[0m (ReLU)
+                         .[31m3[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m4[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m5[0m (ReLU)
+                         .[31m6[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m7[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m8[0m (ReLU)
+               .[31mcls_logits[0m (Conv2d)
+                          - [31mweight[0m
+                          - [31mbias[0m
+               .[31mbbox_pred[0m (Conv2d)
+                         - [31mweight[0m
+                         - [31mbias[0m
+     .[31mbox3[0m (NONLOCALBAN)
+          .[31mhead[0m (CARHead)
+               .[31mfi[0m (Sequential)
+                  .[31m0[0m (Conv2d)
+                    - [31mweight[0m
+                    - [31mbias[0m
+                  .[31m1[0m (BatchNorm2d)
+                    - [31mweight[0m
+                    - [31mbias[0m
+                  .[31m2[0m (ReLU)
+               .[31mcls_tower[0m (Sequential)
+                         .[31m0[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m1[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m2[0m (ReLU)
+                         .[31m3[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m4[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m5[0m (ReLU)
+                         .[31m6[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m7[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m8[0m (ReLU)
+               .[31mreg_tower[0m (Sequential)
+                         .[31m0[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m1[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m2[0m (ReLU)
+                         .[31m3[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m4[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m5[0m (ReLU)
+                         .[31m6[0m (Conv2d)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m7[0m (GroupNorm)
+                           - [31mweight[0m
+                           - [31mbias[0m
+                         .[31m8[0m (ReLU)
+               .[31mcls_logits[0m (Conv2d)
+                          - [31mweight[0m
+                          - [31mbias[0m
+               .[31mbbox_pred[0m (Conv2d)
+                         - [31mweight[0m
+                         - [31mbias[0m
+.[31mrank_cls_loss[0m (Rank_CLS_Loss)
+.[31mrank_loc_loss[0m (Rank_IGR_Loss)
+[2022-07-17 20:34:56,994-rk0-train.py#243] Epoch: [1][20/5357] lr: 0.001000
+	batch_time: 6.801892 (10.078514)	data_time: 1.796387 (5.045119)
+	CR_loss: 0.153832 (0.185667)	IGR_loss_1: 0.253867 (0.276206)
+	IGR_loss_2: 0.249137 (0.249892)	cls_loss: 0.317338 (0.454743)
+	loc_loss: 0.994558 (0.997991)	total_loss: 1.968732 (2.164500)
+
+[2022-07-17 20:34:56,995-rk0-log_helper.py#105] Progress: 20 / 107140 [0%], Speed: 10.079 s/iter, ETA 12:11:53 (D:H:M)
+
+[2022-07-17 20:37:11,824-rk0-train.py#243] Epoch: [1][40/5357] lr: 0.001000
+	batch_time: 4.384519 (8.404160)	data_time: 0.718494 (3.316033)
+	CR_loss: 0.145701 (0.163974)	IGR_loss_1: 0.256401 (0.266076)
+	IGR_loss_2: 0.281628 (0.270213)	cls_loss: 0.270784 (0.357971)
+	loc_loss: 0.545992 (0.875410)	total_loss: 1.500506 (1.933645)
+
+[2022-07-17 20:37:11,824-rk0-log_helper.py#105] Progress: 40 / 107140 [0%], Speed: 8.404 s/iter, ETA 10:10:01 (D:H:M)
+
