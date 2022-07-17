@@ -1,5 +1,5 @@
 # SiamPW-RBO
-Our code is based on [PySOT](https://github.com/STVIR/pysot) repository. You may check the original [README.md](https://github.com/STVIR/pysot/blob/master/README.md) of PySOT. 
+Our code is based on [SiamBAN](https://github.com/hqucv/siamban) repository. Thansk for their contributions.
 
 ## 1. Environment setup
 This code has been tested on centos 7(Ubuntu is also OK), Python 3.6, Pytorch 1.1.0(Pytorch 1.2,1.3,1.4 and 1.5 are also OK, but for Pytorch 1.7.0 and above versions, the testing results will have slight difference), CUDA 10.0. Please install related libraries before running this code:
@@ -8,7 +8,6 @@ python setup.py build_ext --inplace
 
 ### Add SiamPW-RBO to your PYTHONPATH
 #export PYTHONPATH=/path/to/SiamPW-RBO:$PYTHONPATH
-export PYTHONPATH=/media/ssd1/TF/SiamPW-RBO:$PYTHONPATH
 
 ## 2. Test
 Download the pretrained model: [Google driver](https://drive.google.com/drive/folders/1VbcFz33dsJwp8SZlZUEb6tTUjDIDWFrk)  and put them into `checkpoints` directory.
