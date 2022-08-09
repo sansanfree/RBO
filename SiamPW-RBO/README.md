@@ -48,7 +48,7 @@ Download the datasets：
 * [DET](http://image-net.org/challenges/LSVRC/2017/)
 * [COCO](http://cocodataset.org)
 * [GOT-10K](http://got-10k.aitestunion.com/downloads)
-* [LASOT] (https://cis.temple.edu/lasot/)
+* [LASOT](https://cis.temple.edu/lasot/)
 
 Scripts to prepare training dataset are listed in `training_dataset` directory.
 
