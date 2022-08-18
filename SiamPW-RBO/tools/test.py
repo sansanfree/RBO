@@ -44,10 +44,9 @@ def main():
   
    
     cur_dir = os.path.dirname(os.path.realpath(__file__))
-   # dataset_root = os.path.join(cur_dir, '../testing_dataset', args.dataset)
+    dataset_root = os.path.join(cur_dir, '../testing_dataset', args.dataset)
     
-    dataset_root = os.path.join('/media/disk1/TF/test_dataset', args.dataset)
-    dataset_root = os.path.join( '/media/disk1/TF/train_dataset/LaSOTTesting/')
+
     # create model
     model = ModelBuilder()
   
@@ -144,8 +143,6 @@ def main():
                 # test one special video
                 if video.name != args.video:
                     continue
-            if v_idx<178:
-                continue
             toc = 0
             pred_bboxes = []
             scores = []

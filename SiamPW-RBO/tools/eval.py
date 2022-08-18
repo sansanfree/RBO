@@ -43,7 +43,7 @@ def main():
     args.num = min(args.num, len(trackers))
     cur_dir = os.path.dirname(os.path.realpath(__file__))
     root = os.path.join(cur_dir, '../testing_dataset', args.dataset)
-    root = os.path.join('/media/disk1/TF/test_dataset', args.dataset)
+
     
     if 'OTB' in args.dataset:
         dataset = OTBDataset(args.dataset, root)
