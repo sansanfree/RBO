@@ -56,6 +56,12 @@ Scripts to prepare training dataset are listed in `training_dataset` directory.
  We provide  cropped images training datasets at Baidu Drive:
  
 * [YOUTUBEBB] url：https://pan.baidu.com/s/1Rsi9nl9fr1bRSMD9MF-emw  code:shcv
+* [VID] url：https://pan.baidu.com/s/1LoUCnfXmNSStmcr51agK5w  code：bwq5
+* [DET] url：https://pan.baidu.com/s/1e1iL9hAsOc80A08xOOpL7A  code：w2wf
+* [COCO] url：https://pan.baidu.com/s/1_goqFHPJvF6cbdJWdcMRAw  code: w9xc
+
+
+
 
  
 
