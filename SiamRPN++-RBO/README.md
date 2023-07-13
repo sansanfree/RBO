@@ -59,6 +59,8 @@ Scripts to prepare training dataset are listed in `training_dataset` directory.
 * [VID] url：https://pan.baidu.com/s/1LoUCnfXmNSStmcr51agK5w  code：bwq5
 * [DET] url：https://pan.baidu.com/s/1e1iL9hAsOc80A08xOOpL7A  code：w2wf
 * [COCO] url：https://pan.baidu.com/s/1_goqFHPJvF6cbdJWdcMRAw  code: w9xc
+* [GOT-10K] url：链接：https://pan.baidu.com/s/1n5wBE3SFbH9eEPBdrDaX7Q code:kwqd 
+
 
 
 
